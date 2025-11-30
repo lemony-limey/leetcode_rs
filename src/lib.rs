@@ -5,3 +5,4 @@ pub mod sum_of_unique_elements_1748;
 pub mod trapping_rainwater_ii;
 pub mod word_ladder;
 pub mod same_tree_100;
+pub mod path_sum_112;
