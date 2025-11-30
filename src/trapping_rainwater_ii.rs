@@ -1,7 +1,7 @@
 use std::cmp::{max, Ordering, Reverse};
 use std::collections::{BinaryHeap};
 
-#[derive(Eq, PartialEq, PartialOrd)]
+#[derive(Eq, PartialEq)]
 struct Cell
 {
     pub height: i32,
@@ -14,6 +14,13 @@ impl Ord for Cell
     fn cmp(&self, other: &Self) -> Ordering
     {
         self.height.cmp(&other.height)
+    }
+}
+
+impl PartialOrd for Cell
+{
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(&other))
     }
 }
 
