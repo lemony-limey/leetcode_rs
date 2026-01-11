@@ -1,21 +1,14 @@
 use leetcode::word_ladder::ladder_length;
+use leetcode::word_search_79::exist;
 
 fn main()
 {
-    let begin_word = String::from("hit");
-    let end_word = String::from("cog");
-    let word_list: Vec<String> = vec![
-          "hot".to_string(),
-          "dot".to_string(),
-          "dog".to_string(),
-          "lot".to_string(),
-          "log".to_string(),
-          "cog".to_string(),
+    let board = vec![
+        vec!['A', 'B', 'C', 'E'],
+        vec!['S', 'F', 'C', 'S'],
+        vec!['A', 'D', 'E', 'E'],
     ];
 
-    ladder_length(
-        begin_word,
-        end_word,
-        word_list,
-    );
+    let result = exist(board, "ABCCED".to_string());
+    println!("result: {}", result);
 }

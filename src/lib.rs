@@ -1,6 +1,7 @@
 pub mod binary_tree_level_order_traversal_102;
 pub mod binary_tree_maximum_path_sum_124;
 pub mod count_subarrays_of_length_three_with_a_condition_3392;
+pub mod design_add_and_search_words_data_structure_211;
 pub mod maximum_number_of_points_from_grid_queries;
 pub mod path_sum_112;
 pub mod same_tree_100;
@@ -9,3 +10,5 @@ pub mod sum_of_unique_elements_1748;
 pub mod symmetric_tree_101;
 pub mod trapping_rainwater_ii;
 pub mod word_ladder;
+pub mod word_search_79;
+pub mod word_search_ii_212;
