@@ -1,4 +1,5 @@
 use std::collections::{HashMap, HashSet, VecDeque};
+use std::str::Chars;
 
 const ALPHABET_SIZE: usize = 26;
 
@@ -20,10 +21,22 @@ impl TrieNode
         }
     }
 
-    pub fn add_word(&mut self, word: &mut VecDeque<char>)
+    pub fn new_from_vec(words: &Vec<String>) -> Self
+    {
+        let mut root = TrieNode::new();
+
+        for word in words
+        {
+            root.add_word(&mut word.chars())
+        }
+
+        root
+    }
+
+    pub fn add_word(&mut self, word: &mut Chars)
     {
         // If there are still characters left, this is not the end of the word.
-        if let Some(next_char) = word.pop_front()
+        if let Some(next_char) = word.next()
         {
             if let Some(node) = self.children.get_mut(&next_char)
             {
@@ -56,13 +69,7 @@ pub fn find_words(board: Vec<Vec<char>>, words: Vec<String>) -> Vec<String>
     let mut found = HashSet::with_capacity(words.len());
 
     let mut visited: HashSet<(i8, i8)> = HashSet::new();
-    let words: HashMap<char, String> = words
-        .into_iter()
-        .map(|word| {
-            let first_char = word.chars().nth(0).unwrap();
-            (first_char, word)
-        })
-        .collect();
+
 
     for row in 0..board.len()
     {
