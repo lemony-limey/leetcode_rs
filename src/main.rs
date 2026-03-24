@@ -1,4 +1,4 @@
-use leetcode::word_ladder::ladder_length;
+use leetcode::word_ladder_127::ladder_length;
 use leetcode::word_search_79::exist;
 
 fn main()
