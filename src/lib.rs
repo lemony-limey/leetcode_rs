@@ -18,3 +18,4 @@ pub mod trapping_rainwater_ii_407;
 pub mod word_ladder_127;
 pub mod word_search_79;
 pub mod word_search_ii_212;
+pub mod zigzag_conversion_6;
