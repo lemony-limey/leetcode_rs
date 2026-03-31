@@ -2,6 +2,7 @@ pub mod add_two_numbers_ii_445;
 pub mod best_time_to_buy_and_sell_stock_121;
 pub mod binary_tree_level_order_traversal_102;
 pub mod binary_tree_maximum_path_sum_124;
+pub mod container_with_most_water_11;
 pub mod count_subarrays_of_length_three_with_a_condition_3392;
 pub mod design_add_and_search_words_data_structure_211;
 pub mod maximum_number_of_points_from_grid_queries_2503;
