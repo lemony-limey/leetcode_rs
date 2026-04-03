@@ -12,6 +12,7 @@ pub mod remove_duplicates_from_sorted_array_26;
 pub mod remove_duplicates_from_sorted_array_ii_80;
 pub mod reverse_integer_7;
 pub mod reverse_words_in_a_string_151;
+pub mod rotate_array_189;
 pub mod same_tree_100;
 pub mod sort_students_by_their_kth_score_2545;
 pub mod sum_of_unique_elements_1748;
