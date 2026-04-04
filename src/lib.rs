@@ -19,6 +19,7 @@ pub mod sum_of_unique_elements_1748;
 pub mod symmetric_tree_101;
 pub mod text_justification_68;
 pub mod trapping_rainwater_ii_407;
+pub mod valid_parenthesis_20;
 pub mod word_ladder_127;
 pub mod word_search_79;
 pub mod word_search_ii_212;
