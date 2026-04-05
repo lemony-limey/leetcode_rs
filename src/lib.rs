@@ -5,6 +5,7 @@ pub mod binary_tree_maximum_path_sum_124;
 pub mod container_with_most_water_11;
 pub mod count_subarrays_of_length_three_with_a_condition_3392;
 pub mod design_add_and_search_words_data_structure_211;
+pub mod ipo_502;
 pub mod maximum_number_of_points_from_grid_queries_2503;
 pub mod palindrome_number_9;
 pub mod path_sum_112;
