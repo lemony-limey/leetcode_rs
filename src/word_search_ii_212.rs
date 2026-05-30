@@ -1,5 +1,7 @@
-use std::collections::{HashMap, HashSet, VecDeque};
-use std::str::Chars;
+use std::{
+    collections::{HashMap, HashSet, VecDeque},
+    str::Chars,
+};
 
 const ALPHABET_SIZE: usize = 26;
 
@@ -7,17 +9,16 @@ const ALPHABET_SIZE: usize = 26;
 struct TrieNode
 {
     is_word_boundary: bool,
-    children: HashMap<char, Option<Box<TrieNode>>>,
+    children:         HashMap<char, Option<Box<TrieNode>>>,
 }
 
 impl TrieNode
 {
     pub fn new() -> Self
     {
-        Self
-        {
+        Self {
             is_word_boundary: false,
-            children: HashMap::with_capacity(26),
+            children:         HashMap::with_capacity(26),
         }
     }
 
@@ -48,10 +49,8 @@ impl TrieNode
             // Node doesn't already exist as a child node, so add it.
             else
             {
-                self.children.insert(
-                    next_char,
-                    Some( Box::new( TrieNode::new() ) )
-                );
+                self.children
+                    .insert(next_char, Some(Box::new(TrieNode::new())));
             }
         }
         // If this node is the end of the word, mark it as a word boundary.
@@ -70,7 +69,6 @@ pub fn find_words(board: Vec<Vec<char>>, words: Vec<String>) -> Vec<String>
 
     let mut visited: HashSet<(i8, i8)> = HashSet::new();
 
-
     for row in 0..board.len()
     {
         for column in 0..board[row].len()
@@ -82,5 +80,3 @@ pub fn find_words(board: Vec<Vec<char>>, words: Vec<String>) -> Vec<String>
     // Once this point is reached, the search space has been exhausted
     found.into_iter().collect()
 }
-
-

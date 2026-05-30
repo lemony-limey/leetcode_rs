@@ -1,5 +1,4 @@
-use std::cmp::Reverse;
-use std::collections::BinaryHeap;
+use std::{cmp::Reverse, collections::BinaryHeap};
 
 /// w - Initial capital
 /// k - The maximum number of projects
@@ -12,7 +11,8 @@ pub fn find_maximized_capital(k: i32, w: i32, profits: Vec<i32>, capital: Vec<i3
     let mut current_capital = w;
     let mut projects_remaining = k;
 
-    let mut capital_and_profits = capital.into_iter()
+    let mut capital_and_profits = capital
+        .into_iter()
         .zip(profits.into_iter())
         .map(|x| Reverse(x))
         .collect::<BinaryHeap<Reverse<(i32, i32)>>>();

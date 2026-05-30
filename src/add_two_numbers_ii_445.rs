@@ -4,43 +4,37 @@ use std::collections::VecDeque;
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode
 {
-    pub val: i32,
-    pub next: Option<Box<ListNode>>
+    pub val:  i32,
+    pub next: Option<Box<ListNode>>,
 }
 
 impl ListNode
 {
     #[inline]
-    fn new(val: i32) -> Self
-    {
-        Self {
-          next: None,
-          val
-        }
-    }
+    fn new(val: i32) -> Self { Self { next: None, val } }
 }
 
-pub fn add_two_numbers(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>>
+pub fn add_two_numbers(
+    l1: Option<Box<ListNode>>,
+    l2: Option<Box<ListNode>>,
+) -> Option<Box<ListNode>>
 {
     // Add the contents of each list to the corresponding stack.
     let mut l1_stack: VecDeque<i32> = get_stack_from_list(&l1);
     let mut l2_stack: VecDeque<i32> = get_stack_from_list(&l2);
-    
+
     let mut new_list: Option<Box<ListNode>> = None;
 
     loop
     {
         match (l1_stack.pop_front(), l2_stack.pop_front())
         {
-            (Some(value1), Some(value2)) => {
-                
-            },
-            (Some(value), None) => {
-                
-            },
-            (None, Some(value)) => {
-                
-            },
+            (Some(value1), Some(value2)) =>
+            {},
+            (Some(value), None) =>
+            {},
+            (None, Some(value)) =>
+            {},
             (None, None) => return new_list,
         }
     }
@@ -73,18 +67,9 @@ fn get_stack_from_list(list: &Option<Box<ListNode>>) -> VecDeque<i32>
 
     while current_node.is_some()
     {
-        stack.push_front(
-            current_node
-                .as_ref()
-                .unwrap()
-                .val
-        );
-        current_node = &current_node
-            .as_ref()
-            .unwrap()
-            .next;
+        stack.push_front(current_node.as_ref().unwrap().val);
+        current_node = &current_node.as_ref().unwrap().next;
     }
 
     stack
 }
-

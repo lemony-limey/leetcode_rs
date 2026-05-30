@@ -12,17 +12,14 @@ impl TreeNode
     #[inline]
     pub fn new(val: i32) -> Self
     {
-        Self
-        {
+        Self {
             val,
             left: None,
-            right: None
+            right: None,
         }
     }
 }
-use std::rc::Rc;
-use std::cell::RefCell;
-use std::collections::VecDeque;
+use std::{cell::RefCell, collections::VecDeque, rc::Rc};
 
 /// Can perform DFS and check that all of the compared nodes are the same.
 pub fn is_same_tree(p: Option<Rc<RefCell<TreeNode>>>, q: Option<Rc<RefCell<TreeNode>>>) -> bool
@@ -48,15 +45,20 @@ pub fn is_same_tree(p: Option<Rc<RefCell<TreeNode>>>, q: Option<Rc<RefCell<TreeN
         // Check if any values were popped off the stack.
         match (current_p, current_q)
         {
-            (Some(p), Some(q)) => {
+            (Some(p), Some(q)) =>
+            {
                 // Match the inner values
                 // If both were in the stack, they should both
 
                 match (p, q)
                 {
-                    (Some(p), Some(q)) => {
+                    (Some(p), Some(q)) =>
+                    {
                         // Check that the values of each node are the same
-                        if p.borrow().val != q.borrow().val { return false; }
+                        if p.borrow().val != q.borrow().val
+                        {
+                            return false;
+                        }
 
                         // Add all of the values of each to the queue
                         queue_1_p.push_front(p.borrow_mut().left.clone());
@@ -64,12 +66,24 @@ pub fn is_same_tree(p: Option<Rc<RefCell<TreeNode>>>, q: Option<Rc<RefCell<TreeN
                         queue_2_q.push_front(q.borrow_mut().left.clone());
                         queue_2_q.push_front(q.borrow_mut().right.clone());
                     },
-                    (None, None) => { continue; },
-                    (_, _) => { return false; },
+                    (None, None) =>
+                    {
+                        continue;
+                    },
+                    (_, _) =>
+                    {
+                        return false;
+                    },
                 }
-            }
-            (None, None) => { continue; }
-            (_, _) => { return false; }
+            },
+            (None, None) =>
+            {
+                continue;
+            },
+            (_, _) =>
+            {
+                return false;
+            },
         }
     }
 

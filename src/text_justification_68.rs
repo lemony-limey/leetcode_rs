@@ -13,47 +13,47 @@ pub fn full_justify(words: Vec<String>, max_width: i32) -> Vec<String>
     // Keep going while we still have words left over.
     while !words_remaining.is_empty()
     {
-        let next_word = words_remaining.pop_front()
-            .expect("we have already established there is a word remaining in the \
-                queue, so this value always exists");
+        let next_word = words_remaining.pop_front().expect(
+            "we have already established there is a word remaining in the \
+                queue, so this value always exists",
+        );
 
         // If adding this next word would make the line too large, commit the current line
         // and start the next one.
         if ((characters_in_line + next_word.len()) + (words_in_line.len())) > max_width
         {
             // Format and commit line
-            result.push(
-                add_padding_to_line(
-                    words_in_line,
-                    characters_in_line as i32,
-                    max_width as i32,
-                    false
-                )
-            );
+            result.push(add_padding_to_line(
+                words_in_line,
+                characters_in_line as i32,
+                max_width as i32,
+                false,
+            ));
 
             words_in_line = Vec::new();
             characters_in_line = 0;
         }
 
         characters_in_line += next_word.len();
-        words_in_line.push(
-            next_word
-        );
+        words_in_line.push(next_word);
     }
 
-    result.push(
-        add_padding_to_line(
-            words_in_line,
-            characters_in_line as i32,
-            max_width as i32,
-            true
-        )
-    );
+    result.push(add_padding_to_line(
+        words_in_line,
+        characters_in_line as i32,
+        max_width as i32,
+        true,
+    ));
 
     result
 }
 
-fn add_padding_to_line(words: Vec<String>, characters_in_line: i32, max_width: i32, is_last_line: bool) -> String
+fn add_padding_to_line(
+    words: Vec<String>,
+    characters_in_line: i32,
+    max_width: i32,
+    is_last_line: bool,
+) -> String
 {
     let max_width_usize = max_width as usize;
 
@@ -65,10 +65,10 @@ fn add_padding_to_line(words: Vec<String>, characters_in_line: i32, max_width: i
     }
     if is_last_line
     {
-        let temp = words.into_iter()
-            .reduce(|acc, word| {
-                format!("{acc} {word}")
-            }).unwrap();
+        let temp = words
+            .into_iter()
+            .reduce(|acc, word| format!("{acc} {word}"))
+            .unwrap();
         return format!("{:<0width$}", temp, width = max_width_usize);
     }
 
@@ -82,15 +82,23 @@ fn add_padding_to_line(words: Vec<String>, characters_in_line: i32, max_width: i
     // (5 / 3) to all, but for f(0) we have 5 % 3 left over.
     // We add an extra 1 if (((5 % 3) - i) > 0): (2 - 0 > 0, 2 - 1 > 0, 2 - 2 !> 0)
 
-
     let gap_count = words.len() - 1;
     let spaces_needed = max_width - characters_in_line;
-    words.into_iter()
+    words
+        .into_iter()
         .enumerate()
         .reduce(|(_, acc), (index, word)| {
-            (0, format!("{acc}{:>0width$}{word}", " ", width = (
-                    (spaces_needed / gap_count as i32) + ((spaces_needed % gap_count as i32) - index as i32 >= 0) as i32
-                ) as usize,
-            ))
-        }).expect("this is not empty").1
+            (
+                0,
+                format!(
+                    "{acc}{:>0width$}{word}",
+                    " ",
+                    width = ((spaces_needed / gap_count as i32)
+                        + ((spaces_needed % gap_count as i32) - index as i32 >= 0) as i32)
+                        as usize,
+                ),
+            )
+        })
+        .expect("this is not empty")
+        .1
 }

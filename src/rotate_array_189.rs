@@ -1,10 +1,13 @@
 pub fn rotate(nums: &mut Vec<i32>, k: i32)
 {
     let k = (k as usize) % nums.len();
-    
+
     // If rotating by k would result in no change, return early.
-    if k == 0 { return; }
-    
+    if k == 0
+    {
+        return;
+    }
+
     reverse(nums, 0, nums.len());
     reverse(nums, 0, k);
     reverse(nums, k, nums.len());

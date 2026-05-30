@@ -2,8 +2,11 @@
 pub fn max_area(height: Vec<i32>) -> i32
 {
     // Base case
-    if height.len() < 1 { return 0; }
-    
+    if height.len() < 1
+    {
+        return 0;
+    }
+
     let mut left = 0;
     let mut right = height.len() - 1;
     let mut current_maximum = 0;
@@ -27,6 +30,6 @@ pub fn max_area(height: Vec<i32>) -> i32
             right -= 1;
         }
     }
-    
+
     current_maximum
 }

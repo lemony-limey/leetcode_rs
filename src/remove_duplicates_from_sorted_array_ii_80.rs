@@ -29,7 +29,7 @@ pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32
             unique_elements += 1;
             current += 1;
             duplicate_counter += 1;
-            
+
             let temp = nums[current];
             nums[current] = nums[next_unique];
             nums[next_unique] = temp;

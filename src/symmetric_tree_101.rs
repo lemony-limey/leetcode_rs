@@ -2,8 +2,8 @@
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode
 {
-    pub val: i32,
-    pub left: Option<Rc<RefCell<TreeNode>>>,
+    pub val:   i32,
+    pub left:  Option<Rc<RefCell<TreeNode>>>,
     pub right: Option<Rc<RefCell<TreeNode>>>,
 }
 
@@ -12,16 +12,14 @@ impl TreeNode
     #[inline]
     pub fn new(val: i32) -> Self
     {
-        Self
-        {
+        Self {
             val,
             left: None,
-            right: None
+            right: None,
         }
     }
 }
-use std::rc::Rc;
-use std::cell::RefCell;
+use std::{cell::RefCell, rc::Rc};
 
 /// Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric
 /// around its center).
@@ -29,7 +27,9 @@ use std::cell::RefCell;
 /// Categorised as a BFS question, but DFS makes more sense.
 pub fn is_symmetric(root: Option<Rc<RefCell<TreeNode>>>) -> bool
 {
-    let Some(root) = root else {
+    let Some(root) = root
+    else
+    {
         return false;
     };
 
@@ -38,17 +38,24 @@ pub fn is_symmetric(root: Option<Rc<RefCell<TreeNode>>>) -> bool
     is_symmetric_recursive(left, right)
 }
 
-fn is_symmetric_recursive(left: Option<Rc<RefCell<TreeNode>>>, right: Option<Rc<RefCell<TreeNode>>>) -> bool
+fn is_symmetric_recursive(
+    left: Option<Rc<RefCell<TreeNode>>>,
+    right: Option<Rc<RefCell<TreeNode>>>,
+) -> bool
 {
     match (left, right)
     {
-        (None, None) => { true },
-        (Some(left), Some(right)) => {
-            if left.borrow().val != right.borrow().val { return false; }
+        (None, None) => true,
+        (Some(left), Some(right)) =>
+        {
+            if left.borrow().val != right.borrow().val
+            {
+                return false;
+            }
 
             is_symmetric_recursive(left.borrow().left.clone(), right.borrow().right.clone())
                 && is_symmetric_recursive(left.borrow().right.clone(), right.borrow().left.clone())
         },
-        _ => { false },
+        _ => false,
     }
 }

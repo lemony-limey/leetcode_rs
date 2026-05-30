@@ -19,9 +19,12 @@ pub fn reverse(x: i32) -> i32
         result.push(*digit as char);
     }
 
-    if let Ok(result) = i32::from_str(&*result) {
+    if let Ok(result) = i32::from_str(&*result)
+    {
         if is_negative { -result } else { result }
-    } else {
+    }
+    else
+    {
         0
     }
 }

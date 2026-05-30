@@ -1,5 +1,5 @@
 /// The matrices are COLUMN-MAJOR.
-/// 
+///
 /// The string "PAYPALISHIRING" with num_rows = 3 would become:
 ///
 /// P   A   H   N
@@ -36,7 +36,10 @@
 pub fn convert(s: String, num_rows: i32) -> String
 {
     // Base case.
-    if num_rows == 1 { return s; }
+    if num_rows == 1
+    {
+        return s;
+    }
 
     let chars: Vec<char> = s.chars().collect();
 
@@ -59,7 +62,8 @@ pub fn convert(s: String, num_rows: i32) -> String
                 // Handle case where current_index and current_index + offset - i
                 //   are equal.
                 if second < chars.len()  // is within bounds
-                    && second != current_index  // has not already been added this iteration
+                    && second != current_index
+                // has not already been added this iteration
                 {
                     result.push(chars[second]);
                 }

@@ -14,8 +14,7 @@ pub fn is_valid_sudoku(board: Vec<Vec<char>>) -> bool
         {
             if value.is_numeric()
             {
-                let value = value.to_digit(10)
-                    .expect("already checked it's a number") as usize;
+                let value = value.to_digit(10).expect("already checked it's a number") as usize;
 
                 // If value has already been seen, we have a duplicate
                 if seen[value - 1]
@@ -40,7 +39,8 @@ pub fn is_valid_sudoku(board: Vec<Vec<char>>) -> bool
             let value = board[row][column];
             if value.is_numeric()
             {
-                let value = board[row][column].to_digit(10)
+                let value = board[row][column]
+                    .to_digit(10)
                     .expect("already checked it's a number") as usize;
 
                 // If value has already been seen, we have a duplicate
@@ -73,8 +73,10 @@ pub fn is_valid_sudoku(board: Vec<Vec<char>>) -> bool
                 let value = &board[x][y];
                 if value.is_numeric()
                 {
-                    let value = board[x][y].to_digit(10)
-                        .expect("already checked it's a number") as usize;
+                    let value = board[x][y]
+                        .to_digit(10)
+                        .expect("already checked it's a number")
+                        as usize;
 
                     // If value has already been seen, we have a duplicate
                     if seen[value - 1]

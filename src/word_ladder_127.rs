@@ -3,7 +3,10 @@ use std::collections::{HashMap, HashSet, VecDeque};
 pub fn ladder_length(begin_word: String, end_word: String, mut word_list: Vec<String>) -> i32
 {
     // Exit early if the starting word is not in the word list
-    if !word_list.contains(&end_word) { return 0 }
+    if !word_list.contains(&end_word)
+    {
+        return 0;
+    }
 
     // Build the adjacency list
     let mut neighbours: HashMap<String, Vec<String>> = HashMap::new();
@@ -42,14 +45,16 @@ pub fn ladder_length(begin_word: String, end_word: String, mut word_list: Vec<St
     {
         for _ in 0..queue.len()
         {
-            let Some(word) = queue.pop_front() else {
+            let Some(word) = queue.pop_front()
+            else
+            {
                 eprintln!("bfs: Could not pop from queue");
-                return 0
+                return 0;
             };
 
             if word.eq(&end_word)
             {
-                return result
+                return result;
             }
 
             for j in 0..word.len()

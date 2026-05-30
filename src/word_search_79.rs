@@ -31,7 +31,7 @@ fn dfs(
     column: i32,
     position: usize,
     word: &Vec<char>,
-    visited: &mut HashSet<(i32, i32)>
+    visited: &mut HashSet<(i32, i32)>,
 ) -> bool
 {
     if position == word.len()
@@ -60,4 +60,3 @@ fn dfs(
 
     result
 }
-

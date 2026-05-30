@@ -2,7 +2,10 @@ pub fn is_palindrome(x: i32) -> bool
 {
     // x cannot be a palindrome if negative or if it is a number greater than
     // 0 that happens to end with a 0.
-    if x < 0 || (x % 10 == 0 && x != 0) { return false; }
+    if x < 0 || (x % 10 == 0 && x != 0)
+    {
+        return false;
+    }
 
     let mut num = x;
     let mut reversed = 0;
