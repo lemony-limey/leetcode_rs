@@ -1,6 +1,6 @@
 use std::{cell::RefCell, ops::Deref, rc::Rc};
 
-use leetcode::invert_binary_tree_226::invert_tree;
+use leetcode::{invert_binary_tree_226::invert_tree, jump_game_ii_45};
 
 fn main()
 {
@@ -79,12 +79,16 @@ fn main()
     // let root = four;
     // let result = invert_tree(Some(root));
 
-    let word = "hello".to_string();
-    let prefix = "hell".to_string();
-    let mut obj = leetcode::implement_trie_208::Trie::new();
-    obj.insert(word.clone());
-    let ret_2: bool = obj.search(word);
-    let ret_3: bool = obj.starts_with(prefix);
-    // println!("result: {:#?}", result);
-    println!("is hello in trie? (expected true): {}\nis there a word beginning with hell? (expected true): {}", ret_2, ret_3);
+    // let word = "hello".to_string();
+    // let prefix = "hell".to_string();
+    // let mut obj = leetcode::implement_trie_208::Trie::new();
+    // obj.insert(word.clone());
+    // let ret_2: bool = obj.search(word);
+    // let ret_3: bool = obj.starts_with(prefix);
+    // // println!("result: {:#?}", result);
+    // println!("is hello in trie? (expected true): {}\nis there a word beginning with hell? (expected true): {}", ret_2, ret_3);
+
+    let nums: Vec<i32> = vec![10,9,8,7,6,5,4,3,2,1,1,0];
+    let result = jump_game_ii_45::jump(nums);
+    println!("result: {}", result);
 }

@@ -1,4 +1,4 @@
-pub fn search(nums: Vec<i32>, target: i32) -> i32
+pub fn search(nums: Vec<i32>, target: i32) -> bool
 {
     let (mut left, mut right) = (0, nums.len() - 1);
 

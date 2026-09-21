@@ -9,6 +9,7 @@ pub mod implement_trie_208;
 pub mod integer_to_roman_12;
 pub mod invert_binary_tree_226;
 pub mod ipo_502;
+pub mod jump_game_ii_45;
 pub mod lru_cache_146;
 pub mod maximum_number_of_points_from_grid_queries_2503;
 pub mod palindrome_number_9;
